@@ -1,4 +1,4 @@
-# Three.js Journey
+# Initial Code by Davide Barca
 
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).
