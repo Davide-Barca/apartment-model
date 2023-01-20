@@ -1,4 +1,10 @@
-# Initial Code by Davide Barca
+# Appartment Model by Davide Barca 
+## *(I'm working on it)*
+
+## Final Result
+<a href="" target="_blank">
+  <img src="/static/Model/FinalResult.png">
+</a>
 
 ## Setup
 Download [Node.js](https://nodejs.org/en/download/).
