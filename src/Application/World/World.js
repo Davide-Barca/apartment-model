@@ -19,13 +19,28 @@ export default class World{
         this.loader.draco = new DRACOLoader()
         this.loader.draco.setDecoderPath('/draco/')
 
+        this.loader.texture = new THREE.TextureLoader()
+        this.loader.texture.load(
+            'ModelDev/baked02.png',
+            (texture) => {
+                this.bakedTexture = texture
+                this.bakedTexture.flipY = false
+                this.bakedTexture.encoding = THREE.sRGBEncoding
+
+                this.bakedMaterial = new THREE.MeshBasicMaterial({ map: this.bakedTexture })
+            }
+        )
+
         this.loader.gltf = new GLTFLoader()
         this.loader.gltf.setDRACOLoader(this.loader.draco)
         this.loader.gltf.load(
-            '/Model/apartment.glb',
+            '/ModelDev/apartment.glb',
             (gltf) => {
-                gltf.scene.receiveShadow = false
-                gltf.scene.castShadow = true
+                // gltf.scene.receiveShadow = false
+                // gltf.scene.castShadow = true
+                this.baked = gltf.scene.children.find((child) => child.name === 'OggettiMarciapede')
+                console.log(this.baked)
+                this.baked.material = this.bakedMaterial
                 gltf.scene.rotation.y = -(Math.PI / 2)
                 this.scene.add(gltf.scene)
             }
@@ -37,6 +52,6 @@ export default class World{
         this.light.castShadow = true
 
         this.light.directional.helper = new THREE.DirectionalLightHelper(this.light.directional)
-        this.scene.add(this.light.directional, this.light.directional.helper)
+        // this.scene.add(this.light.directional, this.light.directional.helper)
     }
 }
