@@ -21,10 +21,8 @@ export default class Renderer{
         this.renderer.setSize(this.sizes.width, this.sizes.height)
         this.renderer.setPixelRatio(this.sizes.pixelRatio)
         this.renderer.outputEncoding = THREE.sRGBEncoding
-        this.renderer.physicallyCorrectLights = true
-        this.renderer.toneMapping = THREE.ACESFilmicToneMapping
-
-        console.log('renderer created')
+        // this.renderer.physicallyCorrectLights = true
+        // this.renderer.toneMapping = THREE.ACESFilmicToneMapping
     }
 
     resize(){

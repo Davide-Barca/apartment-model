@@ -10,8 +10,6 @@ export default class Time extends EventEmitter{
         this.elapsed = 0
         this.delta = 16
 
-        console.log('time created')
-
         window.requestAnimationFrame(() => {
             this.tick()
         })

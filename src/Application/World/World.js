@@ -39,7 +39,6 @@ export default class World{
                 // gltf.scene.receiveShadow = false
                 // gltf.scene.castShadow = true
                 this.baked = gltf.scene.children.find((child) => child.name === 'OggettiMarciapede')
-                console.log(this.baked)
                 this.baked.material = this.bakedMaterial
                 gltf.scene.rotation.y = -(Math.PI / 2)
                 this.scene.add(gltf.scene)
