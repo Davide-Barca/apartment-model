@@ -21,7 +21,7 @@ export default class World{
 
         this.loader.texture = new THREE.TextureLoader()
         this.loader.texture.load(
-            'ModelDev/baked02.png',
+            'ModelDev/baked04.jpg',
             (texture) => {
                 this.bakedTexture = texture
                 this.bakedTexture.flipY = false
@@ -36,9 +36,7 @@ export default class World{
         this.loader.gltf.load(
             '/ModelDev/apartment.glb',
             (gltf) => {
-                // gltf.scene.receiveShadow = false
-                // gltf.scene.castShadow = true
-                this.baked = gltf.scene.children.find((child) => child.name === 'OggettiMarciapede')
+                this.baked = gltf.scene.children.find((child) => child.name === 'Marciapiede')
                 this.baked.material = this.bakedMaterial
                 gltf.scene.rotation.y = -(Math.PI / 2)
                 this.scene.add(gltf.scene)

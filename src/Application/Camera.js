@@ -25,6 +25,17 @@ export default class Camera{
     setOrbitControl(){
         this.controls = new OrbitControls(this.instance, this.canvas)
         this.controls.enableDamping = true
+        // Limit horizontal movement
+        this.controls.maxAzimuthAngle = Math.PI / 2
+        this.controls.minAzimuthAngle = 0
+        // Limit vertical movement
+        this.controls.maxPolarAngle = Math.PI / 2
+        // Limit zoom in and zoom out
+        this.controls.minDistance = 3
+        this.controls.maxDistance = 7
+        // Smooth movement
+        this.controls.rotateSpeed = 0.2
+        this.controls.zoomSpeed = 0.2
     }
 
     resize(){
