@@ -30,6 +30,16 @@ export default class World{
                 this.bakedMaterial = new THREE.MeshBasicMaterial({ map: this.bakedTexture })
             }
         )
+        this.loader.texture.load(
+            'ModelDev/palazzo01.jpg',
+            (texture) => {
+                this.palazzoTexture = texture
+                this.palazzoTexture.flipY = false
+                this.palazzoTexture.encoding = THREE.sRGBEncoding
+
+                this.palazzoMaterial = new THREE.MeshBasicMaterial({ map: this.palazzoTexture })
+            }
+        )
 
         this.loader.gltf = new GLTFLoader()
         this.loader.gltf.setDRACOLoader(this.loader.draco)
@@ -37,7 +47,10 @@ export default class World{
             '/ModelDev/apartment.glb',
             (gltf) => {
                 this.baked = gltf.scene.children.find((child) => child.name === 'Marciapiede')
+                this.palazzo = gltf.scene.children.find((child) => child.name === 'Palazzina')
+                console.log(gltf.scene.children)
                 this.baked.material = this.bakedMaterial
+                this.palazzo.material = this.palazzoMaterial
                 gltf.scene.rotation.y = -(Math.PI / 2)
                 this.scene.add(gltf.scene)
             }
