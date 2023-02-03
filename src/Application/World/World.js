@@ -10,58 +10,96 @@ export default class World{
         // setup
         this.application = new Application()
         this.scene = this.application.scene
+        this.resources = this.application.resources
 
-        this.setModel()
+        this.resources.on('loaded', () => {
+            this.setMaterial()
+            this.setModel()
+        })
+    }
+
+    setMaterial(){
+        // Setup Backed Textures
+        this.backed = {}
+        this.backed.marciapiede = {}
+        this.backed.palazzo1 = {}
+        this.backed.palazzo2 = {}
+        this.backed.palazzo3 = {}
+        this.backed.finestre1 = {}
+        this.backed.finestre2 = {}
+        this.backed.finestre3 = {}
+        this.backed.scaleEsterne = {}
+        this.backed.aiuola = {}
+        // Marciapiede Texture
+        this.backed.marciapiede.texture = this.resources.items.marciapiede
+        this.backed.marciapiede.texture.flipY = false
+        this.backed.marciapiede.texture.encoding = THREE.sRGBEncoding
+        // Palazzo Texture
+        this.backed.palazzo1.texture = this.resources.items.palazzo1
+        this.backed.palazzo1.texture.flipY = false
+        this.backed.palazzo1.texture.encoding = THREE.sRGBEncoding
+        this.backed.palazzo2.texture = this.resources.items.palazzo2
+        this.backed.palazzo2.texture.flipY = false
+        this.backed.palazzo2.texture.encoding = THREE.sRGBEncoding
+        this.backed.palazzo3.texture = this.resources.items.palazzo3
+        this.backed.palazzo3.texture.flipY = false
+        this.backed.palazzo3.texture.encoding = THREE.sRGBEncoding
+        // Finestre Texture
+        this.backed.finestre1.texture = this.resources.items.finestre1
+        this.backed.finestre1.texture.flipY = false
+        this.backed.finestre1.texture.encoding = THREE.sRGBEncoding
+        this.backed.finestre2.texture = this.resources.items.finestre2
+        this.backed.finestre2.texture.flipY = false
+        this.backed.finestre2.texture.encoding = THREE.sRGBEncoding
+        this.backed.finestre3.texture = this.resources.items.finestre3
+        this.backed.finestre3.texture.flipY = false
+        this.backed.finestre3.texture.encoding = THREE.sRGBEncoding
+        // Scale Esterne Texture
+        this.backed.scaleEsterne.texture = this.resources.items.scaleEsterne
+        this.backed.scaleEsterne.texture.flipY = false
+        this.backed.scaleEsterne.texture.encoding = THREE.sRGBEncoding
+        // Aiuola Texture
+        this.backed.aiuola.texture = this.resources.items.aiuola
+        this.backed.aiuola.texture.flipY = false
+        this.backed.aiuola.texture.encoding = THREE.sRGBEncoding
+
+        // Setup Materials
+        this.backed.marciapiede.material = new THREE.MeshBasicMaterial({ map: this.backed.marciapiede.texture })
+        this.backed.palazzo1.material = new THREE.MeshBasicMaterial({ map: this.backed.palazzo1.texture })
+        this.backed.palazzo2.material = new THREE.MeshBasicMaterial({ map: this.backed.palazzo2.texture })
+        this.backed.palazzo3.material = new THREE.MeshBasicMaterial({ map: this.backed.palazzo3.texture })
+        this.backed.finestre1.material = new THREE.MeshBasicMaterial({ map: this.backed.finestre1.texture })
+        this.backed.finestre2.material = new THREE.MeshBasicMaterial({ map: this.backed.finestre2.texture })
+        this.backed.finestre3.material = new THREE.MeshBasicMaterial({ map: this.backed.finestre3.texture })
+        this.backed.scaleEsterne.material = new THREE.MeshBasicMaterial({ map: this.backed.scaleEsterne.texture })
+        this.backed.aiuola.material = new THREE.MeshBasicMaterial({ map: this.backed.aiuola.texture })
     }
 
     setModel(){
-        this.loader = {}
-        this.loader.draco = new DRACOLoader()
-        this.loader.draco.setDecoderPath('/draco/')
+        this.model = {}
+        this.model.scene = this.resources.items.appartment.scene
+        this.model.scene.rotation.y = - (Math.PI / 2)
 
-        this.loader.texture = new THREE.TextureLoader()
-        this.loader.texture.load(
-            'ModelDev/baked04.jpg',
-            (texture) => {
-                this.bakedTexture = texture
-                this.bakedTexture.flipY = false
-                this.bakedTexture.encoding = THREE.sRGBEncoding
+        this.model.marciapiede = this.model.scene.children.find((child) => child.name === 'marciapiede')
+        this.model.palazzo1 = this.model.scene.children.find((child) => child.name === 'palazzo1')
+        this.model.palazzo2 = this.model.scene.children.find((child) => child.name === 'palazzo2')
+        this.model.palazzo3 = this.model.scene.children.find((child) => child.name === 'palazzo3')
+        this.model.finestre1 = this.model.scene.children.find((child) => child.name === 'finestre1')
+        this.model.finestre2 = this.model.scene.children.find((child) => child.name === 'finestre2')
+        this.model.finestre3 = this.model.scene.children.find((child) => child.name === 'finestre3')
+        this.model.scaleEsterne = this.model.scene.children.find((child) => child.name === 'scaleEsterne')
+        this.model.aiuola = this.model.scene.children.find((child) => child.name === 'aiuola')
 
-                this.bakedMaterial = new THREE.MeshBasicMaterial({ map: this.bakedTexture })
-            }
-        )
-        this.loader.texture.load(
-            'ModelDev/palazzo01.jpg',
-            (texture) => {
-                this.palazzoTexture = texture
-                this.palazzoTexture.flipY = false
-                this.palazzoTexture.encoding = THREE.sRGBEncoding
+        this.model.marciapiede.material = this.backed.marciapiede.material
+        this.model.palazzo1.material = this.backed.palazzo1.material
+        this.model.palazzo2.material = this.backed.palazzo2.material
+        this.model.palazzo3.material = this.backed.palazzo3.material
+        this.model.finestre1.material = this.backed.finestre1.material
+        this.model.finestre2.material = this.backed.finestre2.material
+        this.model.finestre3.material = this.backed.finestre3.material
+        this.model.scaleEsterne.material = this.backed.scaleEsterne.material
+        this.model.aiuola.material = this.backed.aiuola.material
 
-                this.palazzoMaterial = new THREE.MeshBasicMaterial({ map: this.palazzoTexture })
-            }
-        )
-
-        this.loader.gltf = new GLTFLoader()
-        this.loader.gltf.setDRACOLoader(this.loader.draco)
-        this.loader.gltf.load(
-            '/ModelDev/apartment.glb',
-            (gltf) => {
-                this.baked = gltf.scene.children.find((child) => child.name === 'Marciapiede')
-                this.palazzo = gltf.scene.children.find((child) => child.name === 'Palazzina')
-                console.log(gltf.scene.children)
-                this.baked.material = this.bakedMaterial
-                this.palazzo.material = this.palazzoMaterial
-                gltf.scene.rotation.y = -(Math.PI / 2)
-                this.scene.add(gltf.scene)
-            }
-        )
-
-        this.light = {}
-        this.light.directional = new THREE.DirectionalLight('#ffffff', 1)
-        this.light.directional.position.set(3, 3, 3)
-        this.light.castShadow = true
-
-        this.light.directional.helper = new THREE.DirectionalLightHelper(this.light.directional)
-        // this.scene.add(this.light.directional, this.light.directional.helper)
+        this.scene.add(this.model.scene)
     }
 }
