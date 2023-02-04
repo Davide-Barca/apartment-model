@@ -10,7 +10,9 @@ export default class World{
         // setup
         this.application = new Application()
         this.scene = this.application.scene
+        this.time = this.application.time
         this.resources = this.application.resources
+        this.model = {}
 
         this.axes = new THREE.AxesHelper(10)
 
@@ -82,6 +84,7 @@ export default class World{
         this.backed.oggetti2.texture.flipY = false
         this.backed.oggetti2.texture.encoding = THREE.sRGBEncoding
 
+
         // Setup Materials
         this.backed.marciapiede.material = new THREE.MeshBasicMaterial({ map: this.backed.marciapiede.texture })
         this.backed.palazzo1.material = new THREE.MeshBasicMaterial({ map: this.backed.palazzo1.texture })
@@ -99,8 +102,8 @@ export default class World{
         this.backed.luciLampioni.material = new THREE.MeshBasicMaterial({ color: "#FFFEA6" })
     }
 
+
     setModel(){
-        this.model = {}
         this.model.scene = this.resources.items.appartment.scene
         this.model.scene.rotation.y = - (Math.PI / 2)
         this.model.scene.position.y = -1
@@ -117,6 +120,9 @@ export default class World{
         this.model.aiuola = this.model.scene.children.find((child) => child.name === 'aiuola')
         this.model.oggetti1 = this.model.scene.children.find((child) => child.name === 'oggetti1')
         this.model.oggetti2 = this.model.scene.children.find((child) => child.name === 'oggetti2')
+        this.model.ventola1 = this.model.scene.children.find((child) => child.name === 'ventola1')
+        this.model.ventola2 = this.model.scene.children.find((child) => child.name === 'ventola2')
+        this.model.ventola3 = this.model.scene.children.find((child) => child.name === 'ventola3')
 
         this.model.luciLampioni = this.model.scene.children.find((child) => child.name === 'luciLampioni')
 
@@ -132,9 +138,20 @@ export default class World{
         this.model.aiuola.material = this.backed.aiuola.material
         this.model.oggetti1.material = this.backed.oggetti1.material
         this.model.oggetti2.material = this.backed.oggetti2.material
+        this.model.ventola1.material = this.backed.oggetti2.material
+        this.model.ventola2.material = this.backed.oggetti2.material
+        this.model.ventola3.material = this.backed.oggetti2.material
 
         this.model.luciLampioni.material = this.backed.luciLampioni.material
 
         this.scene.add(this.model.scene)
+    }
+
+    update(){
+        if(this.model.ventola1 != undefined){
+            this.model.ventola1.rotation.z += 0.1
+            this.model.ventola2.rotateX(this.time.delta * 0.007)
+            this.model.ventola3.rotateX(this.time.delta * 0.007)
+        }
     }
 }
