@@ -35,6 +35,11 @@ export default [
         path: "/ModelDev/finestreTerzoPiano.jpg"
     },
     {
+        name: "tende",
+        type: "texture",
+        path: "/ModelDev/tende.jpg"
+    },
+    {
         name: "scaleEsterne",
         type: "texture",
         path: "/ModelDev/scaleEsterne.jpg"
@@ -43,6 +48,16 @@ export default [
         name: "aiuola",
         type: "texture",
         path: "/ModelDev/aiuola.jpg"
+    },
+    {
+        name: "oggetti1",
+        type: "texture",
+        path: "/ModelDev/oggetti1.jpg"
+    },
+    {
+        name: "oggetti2",
+        type: "texture",
+        path: "/ModelDev/oggetti2.jpg"
     },
     {
         name: "appartment",
