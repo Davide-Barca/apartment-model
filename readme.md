@@ -1,16 +1,7 @@
-<<<<<<< HEAD
-# [Appartment Model by Davide Barca](https://appartment-model-dev.vercel.app/)
-## *(I'm working on it)*
+# [Appartment Model by Davide Barca](https://appartment-model.vercel.app/)
 
 ## Final Result
-<a href="https://appartment-model-dev.vercel.app/" target="_blank">
-=======
-# [Appartment Model by Davide Barca](https://appartment-model-dev.vercel.app/)
-## *(I'm working on it)*
-
-## Final Result
-<a href="https://appartment-model-dev.vercel.app/" target="_blank">
->>>>>>> dev
+<a href="https://appartment-model.vercel.app/" target="_blank">
   <img src="/static/Model/FinalResult.png">
 </a>
 
