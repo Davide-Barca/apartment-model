@@ -20,13 +20,22 @@ export default class Camera{
         this.instance = new THREE.PerspectiveCamera(75, this.sizes.width / this.sizes.height, 0.1, 100)
         this.instance.position.set(5, 4, 5)
         this.scene.add(this.instance)
-
-        console.log('camera created')
     }
 
     setOrbitControl(){
         this.controls = new OrbitControls(this.instance, this.canvas)
         this.controls.enableDamping = true
+        // Limit horizontal movement
+        this.controls.maxAzimuthAngle = Math.PI / 2
+        this.controls.minAzimuthAngle = 0
+        // Limit vertical movement
+        this.controls.maxPolarAngle = Math.PI / 2
+        // Limit zoom in and zoom out
+        this.controls.minDistance = 2
+        this.controls.maxDistance = 7
+        // Smooth movement
+        this.controls.rotateSpeed = 0.2
+        // this.controls.zoomSpeed = 0.2
     }
 
     resize(){
