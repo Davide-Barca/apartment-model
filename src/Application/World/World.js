@@ -14,10 +14,6 @@ export default class World{
         this.resources = this.application.resources
         this.model = {}
 
-        this.axes = new THREE.AxesHelper(10)
-
-        this.scene.add(this.axes)
-
         this.resources.on('loaded', () => {
             this.setMaterial()
             this.setModel()
