@@ -32,10 +32,12 @@ export default class Camera{
         this.controls.maxPolarAngle = Math.PI / 2
         // Limit zoom in and zoom out
         this.controls.minDistance = 2
-        this.controls.maxDistance = 7
+        this.controls.maxDistance = 6
         // Smooth movement
         this.controls.rotateSpeed = 0.2
-        // this.controls.zoomSpeed = 0.2
+        this.controls.zoomSpeed = 0.2
+        // Pan movement disabled
+        this.controls.enablePan = false
     }
 
     resize(){
