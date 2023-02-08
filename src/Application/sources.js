@@ -1,63 +1,18 @@
 export default [
     {
-        name: "marciapiede",
+        name: "baked1",
         type: "texture",
-        path: "/ModelDev/marciapiede.jpg"
+        path: "/ModelDev/baked1.jpg"
     },
     {
-        name: "palazzo1",
+        name: "baked2",
         type: "texture",
-        path: "/ModelDev/palazzo1.jpg"
+        path: "/ModelDev/baked2.jpg"
     },
     {
-        name: "palazzo2",
+        name: "baked3",
         type: "texture",
-        path: "/ModelDev/palazzo2.jpg"
-    },
-    {
-        name: "palazzo3",
-        type: "texture",
-        path: "/ModelDev/palazzo3.jpg"
-    },
-    {
-        name: "finestre1",
-        type: "texture",
-        path: "/ModelDev/finestrePrimoPiano.jpg"
-    },
-    {
-        name: "finestre2",
-        type: "texture",
-        path: "/ModelDev/finestreSecondoPiano.jpg"
-    },
-    {
-        name: "finestre3",
-        type: "texture",
-        path: "/ModelDev/finestreTerzoPiano.jpg"
-    },
-    {
-        name: "tende",
-        type: "texture",
-        path: "/ModelDev/tende.jpg"
-    },
-    {
-        name: "scaleEsterne",
-        type: "texture",
-        path: "/ModelDev/scaleEsterne.jpg"
-    },
-    {
-        name: "aiuola",
-        type: "texture",
-        path: "/ModelDev/aiuola.jpg"
-    },
-    {
-        name: "oggetti1",
-        type: "texture",
-        path: "/ModelDev/oggetti1.jpg"
-    },
-    {
-        name: "oggetti2",
-        type: "texture",
-        path: "/ModelDev/oggetti2.jpg"
+        path: "/ModelDev/baked3.jpg"
     },
     {
         name: "appartment",
