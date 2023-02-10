@@ -1,4 +1,4 @@
-# [Appartment Model by Davide Barca](https://apartment-model.vercel.app/)
+# [Apartment Model by Davide Barca](https://apartment-model.vercel.app/)
 
 ## Final Result
 <a href="https://apartment-model.vercel.app/" target="_blank">
